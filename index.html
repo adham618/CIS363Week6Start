@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Your name - Oriental Travels</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Quando" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script>
+        function w3_open() {
+            document.getElementById("start").style.display = 'none';
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+
+        }
+
+        function w3_close() {
+            document.getElementById("start").style.display = 'block';
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+
+        }
+
+        function openRiver(evt, riverName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("river");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("rivertablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" main-purple", "");
+            }
+            document.getElementById(riverName).style.display = "block";
+            evt.currentTarget.className += " main-purple";
+        }
+
+        function openCity(evt, cityName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" main-purple", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " main-purple";
+        }
+        // When the user scrolls down 25px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        // validateForm
+        // regex patterns
+        var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var validZipRegex = /(^\d{5}$)|(^\d{5}-\d{4}$)/
+        function validateForm() {
+            var first = document.getElementById('first');
+            var last = document.getElementById('last');
+            var email = document.getElementById('email');
+            var zip = document.getElementById('zip');
+
+            if (first.value == "") {
+                window.alert("Please enter your first name!");
+                return false;
+            }
+            if (last.value == "") {
+                window.alert("Please enter your last name!");
+                return false;
+            }
+            if (!email.value.match(validEmailRegex)) {
+                window.alert("Please enter a correct email address!");
+                return false;
+            }
+            if (!zip.value.match(validZipRegex)) {
+                window.alert("Please enter a valid zip number!");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!--***************************************************-->
+    <!-- Side Navigation -- will be under a hamburger menu -->
+    <!--***************************************************-->
+    <nav class="w3-sidebar w3-bar-block  w3-animate-left w3-center main-purple" style="display:none" id="mySidebar">
+        <h5 class="w3-xlarge">Menu</h5>
+        <button class="w3-bar-item w3-button w3-border-bottom w3-hover-black" onclick="w3_close()">Close </button>
+        <a href="#main" class="w3-bar-item w3-button w3-border-bottom main-hover-green">Home</a>
+        <a href="#cruises" class="w3-bar-item w3-button w3-border-bottom main-hover-green">Cruises</a>
+        <a href="#destinations" class="w3-bar-item w3-button w3-border-bottom main-hover-green">Destinations</a>
+        <button class="w3-bar-item w3-button w3-border-bottom main-hover-green"
+            onclick="document.getElementById('signup_form').style.display='block'">Sign Up</button>
+    </nav>
+
+
+    <!--*************************************-->
+    <!-- Main container for all site content -->
+    <!--*************************************-->
+    <div id="main">
+        <p id="start" onclick="w3_open()" class="w3-xlarge w3-btn ">&#9776;</p>
+        <!-- &#9776; is the html code for the ≡ symbol  -->
+
+        <!--******************-->
+        <!-- Header container -->
+        <!--******************-->
+        <header class="w3-center w3-container w3-padding">
+            <img alt="ship logo and title" src="images/logo.png" class="w3-image">
+        </header>
+
+        <body>
+            <!--************************************************************* -->
+            <!--**** Container for Banner data -- called "main-offers"  ***** -->
+            <!--************************************************************* -->
+
+            <div id="main-offers" class="w3-container w3-cell-row w3-center w3-margin-top w3-margin-bottom">
+                <!-- Container for Cruises part of banner -->
+                <div class="w3-cell w3-mobile w3-border">
+                    <h1>Cruises</h1>
+                    <img class="w3-center w3-image" src="images/ship_purple.png" alt="ship icon">
+                    <!-- Actual copy -->
+                    <div class="cruises w3-margin">The <span class="title">Eastern Travel Express Line</span> offers a
+                        series of ships built specifically to travel the rivers of Southeast Asia in a style that is
+                        consistent with colonial times and traditions. The ships are small, having three decks and
+                        accommodating 65 passengers in 200 sq. ft staterooms.</div>
+                    <div class="cruises w3-margin">Staterooms are equiped with A/C, private bathrooms with shower and
+                        hair dryers.</div>
+                    <div class="w3-btn w3-round-large">
+                        <a href="#cruises">
+                            <h4>Learn more...</h4>
+                        </a>
+                    </div>
+                </div>
+                <!-- Container for Destinations part of banner -->
+                <div class="w3-cell w3-mobile w3-border ">
+                    <h1>Destinations</h1>
+                    <img class="w3-center w3-image" src="images/resort_purple.png" alt="resort icon">
+                    <!-- Actual copy -->
+                    <div class="cruises w3-margin">The <span class="title">Eastern Travel Hotel Group</span> offers
+                        fantastic high-quality luxury hotel spaces in many East Asian destinations of interest. From
+                        <i>Hong Kong Bay</i> to the <i>Côn Ðảo Island Archipelago</i>, you will find the higest quality
+                        and the most amenities when you book with us.
+                    </div>
+                    <div class="cruises w3-margin">All rooms are exquisitely tailored to the most discerning demands of
+                        the high class traveller.</div>
+                    <div class="w3-btn w3-round-large">
+                        <a href="#destinations">
+                            <h4>Learn more...</h4>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--************************************* -->
+            <!--**** Container for Cruises data ***** -->
+            <!--************************************* -->
+            <div id="cruises" class="w3-container">
+                <h1 class="main-purple w3-padding w3-round-large">Cruises</h1>
+
+                <!-- Navigation buttons for three cruises using tabbed panels -->
+                <div class="w3-bar w3-sand w3-card">
+                    <button class="w3-bar-item w3-button rivertablink main-purple"
+                        onclick="openRiver(event,'mekong')">Mekong</button>
+                    <button class="w3-bar-item w3-button rivertablink"
+                        onclick="openRiver(event,'yangtze')">Yangtze</button>
+                    <button class="w3-bar-item w3-button rivertablink"
+                        onclick="openRiver(event,'yellow')">Yellow</button>
+                </div>
+                <!-- Cruise #1 -->
+                <div id="mekong" class="w3-container w3-border river w3-animate-left">
+                    <h2 class="w3-margin-left">Mekong River</h2>
+                    <div class="w3-container w3-mobile cruises">
+                        <img src="images/cruises1.jpg" alt="cruise up river in pagoda boat"
+                            class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right w3-margin-bottom">
+                        <!-- Filler text -->
+                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                        illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                        blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
+                        dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+                        dolore magna aliquam erat volutpat.
+                    </div>
+                </div>
+            </div>
+            <!-- Cruise #2 -->
+            <div id="yangtze" class="w3-container w3-border river w3-animate-bottom" style="display:none">
+                <h2 class="w3-margin-left">Yangtze River</h2>
+                <div class="w3-container w3-mobile cruises">
+                    <img src="images/cruises2.jpg" alt="deep river valley"
+                        class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right w3-margin-bottom">
+                    <!-- Filler text -->
+                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+                    dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
+                    praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit
+                    amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                    aliquam erat volutpat.
+                </div>
+                <div>
+                </div>
+
+
+
+                <!-- Cruise #3 -->
+                <div id="yellow" class="w3-container w3-border river w3-animate-right" style="display:none">
+                    <h2 class="w3-margin-left">Yellow River</h2>
+                    <div class="w3-container w3-mobile cruises">
+                        <div class="w3-container w3-cell w3-cell-middle w3-mobile cruises">
+                            <!-- Filler text -->
+                            <video width="400" height="240" controls
+                                class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right">
+                                <source src="images/video/OT_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                            takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+                            sit amet, consetetur sadipscing elitr
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="w3-center w3-padding">
+                <button class="w3-btn w3-round-large w3-text-white main-purple"
+                    onclick="document.getElementById('signup_form').style.display='block'">Sign up</button>
+            </div>
+            <!--****************************************** -->
+            <!--**** Container for Destinations data ***** -->
+            <!--*******************************************-->
+            <div id="destinations" class="w3-container w3-animate-bottom">
+                <h1 class="main-purple w3-padding w3-round-large">Destinations</h1>
+
+
+                <div class="w3-bar w3-sand w3-card">
+                    <button class="w3-bar-item w3-button tablink main-purple"
+                        onclick="openCity(event,'shanghai')">Shanghai</button>
+                    <button class="w3-bar-item w3-button tablink"
+                        onclick="openCity(event,'singapore')">Singapore</button>
+                    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'hongkong')">Hong
+                        Kong</button>
+                </div>
+                <!-- Destination #1 -->
+                <div id="shanghai" class="w3-container w3-border city w3-animate-left">
+                    <h2 class="w3-margin-left">Shanghai</h2>
+                    <div class="w3-container">
+                        <div class="w3-container w3-mobile cruises">
+                            <!-- Filler text -->
+                            <img src="images/destinations1.png" alt="deep river valley"
+                                class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right w3-margin-bottom">
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
+                            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                            ut laoreet dolore magna aliquam erat volutpat.
+                        </div>
+                    </div>
+                </div>
+                <!-- Destination #2 -->
+                <div id="singapore" class="w3-container w3-border city w3-animate-bottom" style="display:none">
+                    <h2 class="w3-margin-left">Singapore</h2>
+                    <div class="w3-container">
+                        <div class="w3-container w3-mobile cruises">
+                            <!-- Filler text -->
+                            <img src="images/destinations2.png" alt="deep river valley"
+                                class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right w3-margin-bottom">
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
+                            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                            ut laoreet dolore magna aliquam erat volutpat.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination #3 -->
+                <div id="hongkong" class="w3-container w3-border city w3-animate-right" style="display:none">
+                    <h2 class="w3-margin-left">Hong Kong</h2>
+                    <div class="w3-container">
+                        <div class="w3-container w3-mobile cruises">
+                            <!-- Filler text -->
+                            <iframe width="400" height="300"
+                                src="https://www.youtube-nocookie.com/embed/DtmJSD8WNAM?rel=0&amp;start=2622"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                class="w3-image w3-left w3-card w3-border w3-round-large w3-padding  w3-margin-right w3-margin-bottom"></iframe>
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
+                            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                            ut laoreet dolore magna aliquam erat volutpat.
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="w3-center w3-padding">
+                <button class="w3-btn w3-round-large w3-text-white main-purple"
+                    onclick="document.getElementById('signup_form').style.display='block'">Sign up</button>
+            </div>
+            <!--************************************-->
+            <!--*********  Signup Form   ***********-->
+            <!--************************************-->
+            <div id="signup_form" class="w3-modal ">
+                <div class="w3-modal-content w3-animate-top w3-card-4 w3-padding ">
+                    <span onclick="document.getElementById('signup_form').style.display='none'"
+                        class="w3-button w3-display-topright">X</span>
+                    <div class="w3-container w3-yellow w3-padding w3-text-deep-purple">
+                        <h1>Sign up for more info</h1>
+                    </div>
+                    <form method="post" class="w3-container w3-light-grey w3-text-deep-purple"
+                        onsubmit="return validateForm();" action="signup.php">
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                            <div class="w3-rest">
+                                <input id="first" class="w3-input w3-border" name="first" type="text"
+                                    placeholder="First Name">
+                            </div>
+                        </div>
+
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                            <div class="w3-rest">
+                                <input id="last" class="w3-input w3-border" name="last" type="text"
+                                    placeholder="Last Name">
+                            </div>
+                        </div>
+
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                            <div class="w3-rest">
+                                <input id="email" class="w3-input w3-border" name="email" type="text"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-truck"></i></div>
+                            <div class="w3-rest">
+                                <input id="zip" class="w3-input w3-border" name="zip" type="text"
+                                    placeholder="Zip Code (5)">
+                            </div>
+                        </div>
+
+
+                        <div class="w3-group">
+                            <input type="submit" value="Submit" class="w3-btn w3-round-large w3-deep-purple">
+
+                        </div>
+                        <div id="msg" class="w3-padding w3-border w3-margin w3-text-red"> </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--*********************************-->
+            <!--****       TOP Button     *******-->
+            <!--*********************************-->
+            <div class="w3-btn w3-red" onclick="topFunction()" id="myBtn" title="Go to top">Top</div>
+
+            <div>
+                <!--********************************-->
+                <!--**** Container for Footer ***** -->
+                <!--********************************-->
+            </div>
+            <footer>
+                <p>&copy;2018 Eastern Travel Ltd.</p>
+            </footer>
+
+        </body>
+
+</html>
